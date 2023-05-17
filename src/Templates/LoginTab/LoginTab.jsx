@@ -6,7 +6,7 @@ import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import { colors, fontSize } from "../../util/theme";
 import { UserContext } from "../../context/UserContext";
 
-const LoginCard = () => {
+const LoginTab = () => {
   const styles = {
     mainDiv: {
       padding: "5% 10%",
@@ -26,7 +26,8 @@ const LoginCard = () => {
       gap: "5px",
     },
     buttonStyle: {
-      width: "120px",
+      width: "80px",
+      padding: "10px",
       display: "flex",
       cursor: "pointer",
       justifyContent: "center",
@@ -43,46 +44,57 @@ const LoginCard = () => {
       backgroundColor: colors.accentColor,
       borderRadius: "50%",
       color: colors.white,
-      width: "100px",
-      height: "100px",
-      marginTop: "30px",
-      marginLeft: "60px",
+      width: "70px",
+      height: "70px",
+      margin: "auto",
     },
     formStyle: {
       display: "flex",
       flexDirection: "column",
     },
   };
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
 
   const submitHandler = (e) => {
     e.preventDefault();
     setUser({
       name: e.target[0].value,
       email: e.target[1].value,
+      password: e.target[2].value,
     });
   };
+
+  const LoginHandler = (e) => {
+    e.preventDefault();
+
+    if (user.email !== e.target[0].value) return;
+    if (user.password !== e.target[1].value) return;
+    console.log("Loged in!");
+  };
+console.log(user)
   return (
     <Grid lg={12} style={styles.mainDiv} container item>
       <Grid lg={5} display="flex" flexDirection="column">
-        <Text style={styles.textStyle}>Login to your acoount</Text>
-        <input
-          style={styles.inputStyle}
-          type="text"
-          placeholder="Name"
-          required
-        />
-        <input
-          style={styles.inputStyle}
-          type="email"
-          placeholder="Email Address"
-          required
-        />
-        <SimplifiedDiv style={styles.checkboxWrapper}>
-          <input type="checkbox" />
-          <Text>Keep me signed in</Text>
-        </SimplifiedDiv>
-        <PrimaryButton style={styles.buttonStyle}>Login</PrimaryButton>
+        <form onSubmit={LoginHandler} style={styles.formStyle}>
+          <Text style={styles.textStyle}>Login to your acoount</Text>
+          <input
+            style={styles.inputStyle}
+            type="mail"
+            placeholder="E-mail"
+            required
+          />
+          <input
+            style={styles.inputStyle}
+            type="password"
+            placeholder="Password"
+            required
+          />
+          <SimplifiedDiv style={styles.checkboxWrapper}>
+            <input type="checkbox" />
+            <Text>Keep me signed in</Text>
+          </SimplifiedDiv>
+          <PrimaryButton style={styles.buttonStyle}>Login</PrimaryButton>
+        </form>
       </Grid>
       <Grid lg={2} display="flex">
         <div style={styles.roundDiv}>OR</div>
@@ -115,4 +127,4 @@ const LoginCard = () => {
   );
 };
 
-export default LoginCard;
+export default LoginTab;

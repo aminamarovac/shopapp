@@ -25,8 +25,7 @@ import ContactScreen from "./Screens/ContactScreen/ContactScreen";
 import CartScreen from "./Screens/CartScreen/CartScreen";
 import CartContextProvider, { CartContext } from "./context/CartContext";
 import UserContextProvider from "./context/UserContext";
-import { LoginScreen } from "./Screens/HomePageScreen/LoginScreen/LoginScreen";
-import LoginCard from "./Templates/LoginCard/LoginCard";
+import LoginScreen from "./Screens/LoginScreen/LoginScreen";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -56,7 +55,7 @@ const App = () => {
     },
     {
       path: "/login",
-      element: <LoginCard />,
+      element: <LoginScreen/>,
     },
   ]);
 
