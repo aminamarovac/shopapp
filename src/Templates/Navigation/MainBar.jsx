@@ -78,7 +78,7 @@ const MainBar = () => {
       </CustomDiv>
       <CustomDiv display='flex' margin={rightmenuItemsMargin}>
         <LockIcon style={iconStyle} />
-        <Link to="/Login">
+        <Link to="/login">
         <Text
           fontFamily={fontFamily.LatoRegular}
           fontSize={fontSize.smallPlus}

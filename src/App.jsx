@@ -55,7 +55,7 @@ const App = () => {
       element: <CartScreen />,
     },
     {
-      path: "/Login",
+      path: "/login",
       element: <LoginCard />,
     },
   ]);

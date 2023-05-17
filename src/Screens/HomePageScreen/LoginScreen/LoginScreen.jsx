@@ -1,11 +1,16 @@
+import React from "react";
+import Navigation from "../../../Templates/Navigation/Navigation";
+import LoginCard from "../../../Templates/LoginCard/LoginCard";
+import Footer from "../../../Templates/Footer/Footer";
 
-import React from 'react'
-
-export const LoginScreen = () => {
+const LoginScreen = () => {
   return (
-    <div>aa</div>
-  )
-}
-
+    <>
+      <Navigation />
+      <LoginCard />
+      <Footer />
+    </>
+  );
+};
 
 export default LoginScreen;
