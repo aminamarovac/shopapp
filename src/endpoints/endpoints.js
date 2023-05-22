@@ -1,11 +1,15 @@
-export  const userEndpoint=
-{
-    fetchAll:"https://jsonplaceholder.typicode.com/users",
-
-}
-// 'www.nassajt.com/api/user/{:userId}'
-
-// get-fetching Data
-// post-sending data 
-// put-update data
-// delete-delete data/user
+export const userEndpoint = {
+    fetchAll: "https://jsonplaceholder.typicode.com/users",
+  };
+  
+  // "www.nassajt.com/api/user/{:userId}"
+  
+  /*
+  async function getUserData (userId){
+  "www.nassajt.com/api/user/{:userId}".replace('{:userId}', userId)
+  }
+  GET - fetching data
+  POST - sending data
+  PUT - Update data
+  DELETE - delete data / user
+  */

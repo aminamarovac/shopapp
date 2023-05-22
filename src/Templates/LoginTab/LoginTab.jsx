@@ -1,10 +1,11 @@
 import { Grid } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import SimplifiedDiv from "../../components/SimplifiedDiv/SimplifiedDiv";
 import Text from "../../components/Text/Text";
 import PrimaryButton from "../../components/PrimaryButton/PrimaryButton";
 import { colors, fontSize } from "../../util/theme";
 import { UserContext } from "../../context/UserContext";
+import { fetchAllUsers } from "../../api/userApi";
 
 const LoginTab = () => {
   const styles = {
@@ -27,11 +28,11 @@ const LoginTab = () => {
     },
     buttonStyle: {
       width: "80px",
-      padding: "10px",
       display: "flex",
+      padding: "10px",
       cursor: "pointer",
       justifyContent: "center",
-      fontSize: fontSize.medium,
+      fontSize: fontSize.normal,
       borderRadius: "5px",
       border: "none",
       color: colors.white,
@@ -53,7 +54,22 @@ const LoginTab = () => {
       flexDirection: "column",
     },
   };
+
+  const [users, setUsers] = useState([]);
+
   const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    let mount = false;
+
+    if (mount) return;
+    fetchAllUsers().then((allUsers) => {
+      setUsers(allUsers);
+      mount = true;
+    });
+  }, []);
+
+  console.log("users", users);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -63,61 +79,60 @@ const LoginTab = () => {
       password: e.target[2].value,
     });
   };
-
-  const LoginHandler = (e) => {
+  const loginHandler = (e) => {
     e.preventDefault();
-
     if (user.email !== e.target[0].value) return;
     if (user.password !== e.target[1].value) return;
-    console.log("Loged in!");
+    console.log("logged in!");
   };
-console.log(user)
+
+
   return (
-    <Grid lg={12} style={styles.mainDiv} container item>
-      <Grid lg={5} display="flex" flexDirection="column">
-        <form onSubmit={LoginHandler} style={styles.formStyle}>
+    <Grid lg={12} style={styles.mainDiv} container>
+      <Grid lg={5} md={5} display='flex' flexDirection='column'>
+        <form onSubmit={loginHandler} style={styles.formStyle}>
           <Text style={styles.textStyle}>Login to your acoount</Text>
           <input
             style={styles.inputStyle}
-            type="mail"
-            placeholder="E-mail"
+            type='mail'
+            placeholder='E-mail'
             required
           />
           <input
             style={styles.inputStyle}
-            type="password"
-            placeholder="Password"
+            type='password'
+            placeholder='Password'
             required
           />
           <SimplifiedDiv style={styles.checkboxWrapper}>
-            <input type="checkbox" />
+            <input type='checkbox' />
             <Text>Keep me signed in</Text>
           </SimplifiedDiv>
           <PrimaryButton style={styles.buttonStyle}>Login</PrimaryButton>
         </form>
       </Grid>
-      <Grid lg={2} display="flex">
+      <Grid lg={2} display='flex'>
         <div style={styles.roundDiv}>OR</div>
       </Grid>
-      <Grid lg={5} display="flex" flexDirection="column">
+      <Grid lg={5} display='flex' flexDirection='column'>
         <Text style={styles.textStyle}>New User Signup!</Text>
         <form onSubmit={submitHandler} style={styles.formStyle}>
           <input
             style={styles.inputStyle}
-            type="text"
-            placeholder="Name"
+            type='text'
+            placeholder='Name'
             required
           />
           <input
             style={styles.inputStyle}
-            type="email"
-            placeholder="Email Address"
+            type='email'
+            placeholder='Email Address'
             required
           />
           <input
             style={styles.inputStyle}
-            type="password"
-            placeholder="Password"
+            type='password'
+            placeholder='Password'
             required
           />
           <PrimaryButton style={styles.buttonStyle}>Signup</PrimaryButton>
@@ -126,5 +141,4 @@ console.log(user)
     </Grid>
   );
 };
-
 export default LoginTab;
