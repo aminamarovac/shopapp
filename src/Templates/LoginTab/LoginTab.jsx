@@ -96,7 +96,7 @@ const LoginTab = () => {
             style={styles.inputStyle}
             type='mail'
             placeholder='E-mail'
-            required
+              required
           />
           <input
             style={styles.inputStyle}
@@ -116,7 +116,7 @@ const LoginTab = () => {
       </Grid>
       <Grid lg={5} display='flex' flexDirection='column'>
         <Text style={styles.textStyle}>New User Signup!</Text>
-        <form onSubmit={submitHandler} style={styles.formStyle}>
+        <form onSubmit={submitHandler} style={styles.formStyle}>  
           <input
             style={styles.inputStyle}
             type='text'

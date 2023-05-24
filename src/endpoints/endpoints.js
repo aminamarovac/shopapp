@@ -2,6 +2,15 @@ export const userEndpoint = {
     fetchAll: "https://jsonplaceholder.typicode.com/users",
   };
   
+  export const postENDpoint = {
+    fetchAll: "https://jsonplaceholder.typicode.com/users",
+  };
+
+
+  export const commentEndpoint={
+    fetchAll: "https://jsonplaceholder.typicode.com/users",
+  }
+
   // "www.nassajt.com/api/user/{:userId}"
   
   /*

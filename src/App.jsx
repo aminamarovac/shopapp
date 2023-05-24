@@ -25,7 +25,7 @@ import ContactScreen from "./Screens/ContactScreen/ContactScreen";
 import CartScreen from "./Screens/CartScreen/CartScreen";
 import CartContextProvider, { CartContext } from "./context/CartContext";
 import UserContextProvider from "./context/UserContext";
-import LoginScreen from "./Screens/LoginScreen/LoginScreen";
+import LoginScreen   from "./Screens/LoginScreen/LoginScreen";
 
 const App = () => {
   const router = createBrowserRouter([
