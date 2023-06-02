@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 
-const counterSlice = createSlice({
+const cardRedux = createSlice({
   name: "counter",
   initialState: {
     value: 0,
@@ -19,6 +19,6 @@ const counterSlice = createSlice({
   },
 });
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, incrementByAmount } = cardRedux.actions;
+export default cardRedux.reducer;
 
-export default counterSlice.reducer;

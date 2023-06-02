@@ -5,6 +5,7 @@ import { UserContext } from "../../context/UserContext";
 import CategoryTab from "../../Templates/CategoryTab/CategoryTab";
 import ProductsHomePage from "../../Templates/ProductsHomePage/ProductsHomePage";
 import banner from "../../assets/images/shop/advertisement.jpg";
+import CounterComponent from "../../Templates/CounterComponent/CounterComponent";
 
 const ShopScreen = () => {
   const { items } = useContext(CartContext);
@@ -17,6 +18,8 @@ const ShopScreen = () => {
       <Navigation />
       <img src={banner} alt="" />
       <ProductsHomePage />
+      {CounterComponent}
+  
 
       <div>{user.toString()}</div>
     </>
