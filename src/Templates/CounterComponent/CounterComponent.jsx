@@ -1,30 +1,40 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { decrement, increment, selectCount } from "./counterSlice";
+import {
+  decrement,
+  increment,
+  incrementByAmount,
+} from "../../redux/counterSlice";
 
-export function CounterComponent() {
-  const count = useSelector(selectCount);
+function CounterComponent() {
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
+
   return (
     <div>
-      <div className={styles.row}>
+      <div>
         <button
-          className={styles.button}
-          aria-label="Increment value"
+          aria-label='Increment value'
           onClick={() => dispatch(increment())}
         >
-          +
+          Increment
         </button>
-        <span className={styles.value}>{count}</span>
+        <span>{count}</span>
         <button
-          className={styles.button}
-          aria-label="Decrement value"
+          aria-label='Decrement value'
           onClick={() => dispatch(decrement())}
         >
-          -
+          Decrement
+        </button>
+        <button
+          aria-label='Increment by amount'
+          onClick={() => dispatch(incrementByAmount(2))}
+        >
+          Increment by amount
         </button>
       </div>
     </div>
   );
 }
 
-export default CounterComponent
+export default CounterComponent;

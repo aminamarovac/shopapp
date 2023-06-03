@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import Navigation from "../../Templates/Navigation/Navigation";
+import Footer from "../../Templates/Footer/Footer";
 import { CartContext } from "../../context/CartContext";
 import { UserContext } from "../../context/UserContext";
-import CategoryTab from "../../Templates/CategoryTab/CategoryTab";
-import ProductsHomePage from "../../Templates/ProductsHomePage/ProductsHomePage";
-import banner from "../../assets/images/shop/advertisement.jpg";
 import CounterComponent from "../../Templates/CounterComponent/CounterComponent";
 
 const ShopScreen = () => {
@@ -16,14 +14,10 @@ const ShopScreen = () => {
   return (
     <>
       <Navigation />
-      <img src={banner} alt="" />
-      <ProductsHomePage />
-      {CounterComponent}
-  
-
       <div>{user.toString()}</div>
+      <CounterComponent />
+      <Footer />
     </>
   );
 };
-
 export default ShopScreen;
